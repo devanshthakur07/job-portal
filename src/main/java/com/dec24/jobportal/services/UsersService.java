@@ -34,6 +34,11 @@ public class UsersService {
         this.passwordEncoder = passwordEncoder;
     }
 
+    public Users findByEmail(String currentUsername) {
+        return usersRepository.findByEmail(currentUsername).orElseThrow(() -> new UsernameNotFoundException("User not found"));
+
+    }
+
     public Users addNew(Users user) {
         System.out.println("Entered here");
         user.setActive(true);
